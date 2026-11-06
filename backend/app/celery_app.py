@@ -12,7 +12,7 @@ celery_app.conf.update(
     task_default_queue="default",
     task_routes={
         "app.tasks.generate_lyrics": {"queue": "lyrics"},
-        # step 4-5 (music) will go to the "music" queue with concurrency 1
+        "app.tasks.generate_music": {"queue": "music"},
     },
     # Do not hang the webhook request if Redis is down - fail fast instead.
     broker_transport_options={"max_retries": 1, "interval_start": 0, "interval_step": 0.2},

@@ -34,7 +34,7 @@ class Settings(BaseSettings):
     login_max_attempts: int = 5
     login_lock_minutes: int = 15
     totp_issuer: str = "Song Studio"
-
+    r2_public_base_url: str | None = None
 
 @lru_cache
 def get_settings() -> Settings:

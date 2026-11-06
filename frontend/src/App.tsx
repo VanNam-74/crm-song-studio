@@ -9,6 +9,8 @@ const Jobs = lazy(() => import('./pages/Jobs'))
 const Sites = lazy(() => import('./pages/Sites'))
 const Prompts = lazy(() => import('./pages/Prompts'))
 const Providers = lazy(() => import('./pages/Providers'))
+const JobDetail = lazy(() => import('./pages/JobDetail'))
+
 
 export default function App() {
   return (
@@ -19,6 +21,8 @@ export default function App() {
         <Route element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="jobs" element={<Jobs />} />
+          <Route path="jobs/:id" element={<JobDetail />} />
+
 
           <Route element={<RequireAuth roles={['admin']} />}>
             <Route path="sites" element={<Sites />} />
