@@ -1,0 +1,465 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Playfair+Display:ital,wght@1,500;1,600&display=swap');
+
+.al-root {
+    --bg: #F6F6F4;
+    --ink: #111111;
+    --ink-2: #333333;
+    --muted: #555555;
+    --line: rgba(0, 0, 0, .075);
+    --border-soft: rgba(0, 0, 0, .09);
+    --glass: rgba(255, 255, 255, .55);
+    --glass-border: rgba(255, 255, 255, .85);
+    --btn-light: #ECECE9;
+    --btn-light-hover: #E2E2DE;
+
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+.al-root *,
+.al-root *::before,
+.al-root *::after {
+    box-sizing: border-box;
+}
+
+.al-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.al-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    animation: al-drift 22s ease-in-out infinite alternate;
+}
+
+.al-blob.b1 {
+    width: 520px;
+    height: 520px;
+    left: -160px;
+    top: -180px;
+    background: rgba(0, 0, 0, .07);
+}
+
+.al-blob.b2 {
+    width: 560px;
+    height: 560px;
+    right: -160px;
+    bottom: -200px;
+    background: rgba(150, 150, 150, .24);
+    animation-duration: 26s;
+}
+
+.al-staff {
+    position: absolute;
+    left: -10%;
+    top: 62%;
+    width: 120%;
+    display: grid;
+    gap: 14px;
+    opacity: .7;
+    transform: rotate(-7deg);
+}
+
+.al-staff i {
+    display: block;
+    height: 1px;
+    background: var(--line);
+}
+
+.al-sidebar {
+    position: sticky;
+    top: 16px;
+    z-index: 3;
+    flex: 0 0 268px;
+    height: calc(100vh - 32px);
+    margin: 16px 0 16px 10px;
+    padding: 22px 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    overflow-y: auto;
+    border-radius: 26px;
+    background: var(--glass);
+    -webkit-backdrop-filter: blur(26px) saturate(1.3);
+    backdrop-filter: blur(26px) saturate(1.3);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 30px 80px -40px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .95);
+    text-align: left;
+    height: auto;
+}
+
+.al-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 8px;
+}
+
+.al-logo {
+    flex-shrink: 0;
+    animation: al-spin 9s linear infinite;
+}
+
+.al-brand-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.1;
+}
+
+.al-brand-sub,
+.al-section-title,
+.al-track,
+.al-user-role {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.al-brand-sub {
+    margin-top: 3px;
+    font-size: 10px;
+    letter-spacing: .14em;
+    color: var(--muted);
+}
+
+.al-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.al-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.al-section-title {
+    padding: 0 12px 6px;
+    font-size: 10.5px;
+    letter-spacing: .14em;
+    color: var(--muted);
+}
+
+.al-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 46px;
+    padding: 0 12px;
+    border-radius: 999px;
+    color: var(--ink-2);
+    text-decoration: none;
+    font-size: 14.5px;
+    font-weight: 500;
+    transition: background-color .2s, color .2s, transform .15s;
+}
+
+.al-link:hover {
+    background: rgba(0, 0, 0, .05);
+    color: var(--ink);
+}
+
+.al-link:active {
+    transform: scale(.98);
+}
+
+.al-link:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+}
+
+.al-track {
+    width: 20px;
+    font-size: 11px;
+    letter-spacing: .06em;
+    color: #6A6A6A;
+}
+
+.al-icon {
+    display: grid;
+    place-items: center;
+}
+
+.al-label {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.al-eq {
+    display: none;
+    align-items: flex-end;
+    gap: 2px;
+    height: 12px;
+}
+
+.al-eq i {
+    width: 3px;
+    height: 100%;
+    border-radius: 1px;
+    background: currentColor;
+    transform-origin: bottom;
+    animation: al-eq 1.1s ease-in-out infinite;
+}
+
+.al-eq i:nth-child(2) {
+    animation-delay: -.35s;
+}
+
+.al-eq i:nth-child(3) {
+    animation-delay: -.7s;
+}
+
+.al-link.is-active {
+    background: var(--ink);
+    color: #FFFFFF;
+    box-shadow: 0 12px 26px -14px rgba(0, 0, 0, .6);
+}
+
+.al-link.is-active .al-track {
+    color: rgba(255, 255, 255, .7);
+}
+
+.al-link.is-active .al-eq {
+    display: flex;
+}
+
+.al-user {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, .6);
+    border: 1px solid var(--border-soft);
+}
+
+.al-user-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.al-avatar {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #141414;
+    color: #F2F2EF;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: inset 0 0 0 5px #141414, inset 0 0 0 6px rgba(255, 255, 255, .12);
+}
+
+.al-user-text {
+    min-width: 0;
+}
+
+.al-user-name {
+    font-size: 14px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.al-user-role {
+    font-size: 10px;
+    letter-spacing: .12em;
+    color: var(--muted);
+}
+
+.al-logout {
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--btn-light);
+    color: var(--ink);
+    font: 600 14px 'Be Vietnam Pro', system-ui, sans-serif;
+    cursor: pointer;
+    transition: background-color .2s, transform .15s;
+}
+
+.al-logout:hover {
+    background: var(--btn-light-hover);
+}
+
+.al-logout:active {
+    transform: scale(.98);
+}
+
+.al-logout:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+}
+
+.al-main {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    min-width: 0;
+    padding: 36px 40px 56px;
+}
+
+.al-topbar,
+.al-scrim {
+    display: none;
+}
+
+@keyframes al-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes al-drift {
+    to {
+        transform: translate(80px, 50px) scale(1.1);
+    }
+}
+
+@keyframes al-eq {
+
+    0%,
+    100% {
+        transform: scaleY(.3);
+    }
+
+    50% {
+        transform: scaleY(1);
+    }
+}
+
+@media (max-width: 900px) {
+    .al-root {
+        display: block;
+    }
+
+    .al-topbar {
+        position: sticky;
+        top: 0;
+        z-index: 4;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        background: rgba(246, 246, 244, .7);
+        -webkit-backdrop-filter: blur(20px) saturate(1.3);
+        backdrop-filter: blur(20px) saturate(1.3);
+        border-bottom: 1px solid var(--border-soft);
+    }
+
+    .al-brand.is-compact {
+        padding: 0;
+    }
+
+    .al-brand.is-compact .al-logo {
+        width: 30px;
+        height: 30px;
+    }
+
+    .al-brand.is-compact .al-brand-name {
+        font-size: 18px;
+    }
+
+    .al-menu-btn {
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        border: 0;
+        border-radius: 12px;
+        background: transparent;
+        color: var(--ink);
+        cursor: pointer;
+    }
+
+    .al-menu-btn:hover {
+        background: rgba(0, 0, 0, .05);
+    }
+
+    .al-menu-btn:focus-visible {
+        outline: 2px solid var(--ink);
+        outline-offset: 2px;
+    }
+
+    .al-sidebar {
+        position: fixed;
+        top: 12px;
+        bottom: 12px;
+        left: 12px;
+        z-index: 6;
+        width: min(300px, 84vw);
+        height: auto;
+        margin: 0;
+        background: rgba(255, 255, 255, .82);
+        transform: translateX(calc(-100% - 24px));
+        visibility: hidden;
+        transition: transform .35s cubic-bezier(.3, 1.2, .5, 1), visibility 0s linear .35s;
+    }
+
+    .al-root.is-open .al-sidebar {
+        transform: translateX(0);
+        visibility: visible;
+        transition: transform .35s cubic-bezier(.3, 1.2, .5, 1), visibility 0s;
+    }
+
+    .al-scrim {
+        position: fixed;
+        inset: 0;
+        z-index: 5;
+        display: block;
+        background: rgba(17, 17, 17, .22);
+        -webkit-backdrop-filter: blur(2px);
+        backdrop-filter: blur(2px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .25s;
+    }
+
+    .al-root.is-open .al-scrim {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .al-main {
+        padding: 24px 16px 48px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .al-root *,
+    .al-root *::before,
+    .al-root *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}

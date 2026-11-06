@@ -1,0 +1,114 @@
+.sk {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: rgba(0, 0, 0, .06);
+}
+
+.sk::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, .75), rgba(255, 255, 255, 0));
+    animation: sk-shimmer 1.5s ease-in-out infinite;
+}
+
+.sk-stack {
+    display: grid;
+    gap: 10px;
+    width: 100%;
+}
+
+.sk-page {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.sk-head {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sk-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 22px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, .55);
+    border: 1px solid rgba(255, 255, 255, .85);
+    box-shadow: 0 24px 60px -36px rgba(0, 0, 0, .25);
+}
+
+.sk-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.sk-split {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+}
+
+.sk-tall {
+    min-height: 280px;
+}
+
+.sk-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.sk-col {
+    display: grid;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+}
+
+.sk-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.sk-table-row {
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr) 110px 100px 90px;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+    border-top: 1px solid rgba(0, 0, 0, .05);
+}
+
+@keyframes sk-shimmer {
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@media (max-width: 640px) {
+    .sk-table-row {
+        grid-template-columns: minmax(0, 1fr) 90px;
+    }
+
+    .sk-table-row> :nth-child(1),
+    .sk-table-row> :nth-child(4),
+    .sk-table-row> :nth-child(5) {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sk::after {
+        animation: none;
+    }
+}
